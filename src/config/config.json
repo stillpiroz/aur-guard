@@ -1,0 +1,8 @@
+{
+  "default_sensitivity": "medium",
+  "api": {
+    "base_url": "URL",
+    "model": "MODEL",
+    "timeout": 15
+  }
+}
