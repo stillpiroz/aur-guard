@@ -112,6 +112,7 @@ def set_base_url(base_url: str):
     # Writing to file
     with open(target_file, 'w', encoding='utf-8') as f:
         json.dump(config, f, indent=4)
+        return(target_file)
     
 def set_model(model: str):
 
@@ -139,6 +140,7 @@ def set_model(model: str):
     # Writing to file
     with open(target_file, 'w', encoding='utf-8') as f:
         json.dump(config, f, indent=4)
+        return(target_file)
 
 def set_default_sensitivity(default_sensitivity: str):
     if default_sensitivity in ("low", "medium", "high"):
@@ -157,5 +159,6 @@ def set_default_sensitivity(default_sensitivity: str):
         # Writing to file
         with open(target_file, 'w', encoding='utf-8') as f:
             json.dump(config, f, indent=4)
+            return(target_file)
     else:
         raise ValueError(f"Invalid sensitivity level: '{default_sensitivity}'. Expected 'low', 'medium', or 'high'.")
