@@ -162,3 +162,31 @@ def set_default_sensitivity(default_sensitivity: str):
             return(target_file)
     else:
         raise ValueError(f"Invalid sensitivity level: '{default_sensitivity}'. Expected 'low', 'medium', or 'high'.")
+
+def set_timeout(timeout):
+
+    """
+    Update `timeout` in `config.json`
+    """
+
+    target_file = get_config_json_path() # get config file path
+
+    # Read file content
+    with open(target_file, 'r', encoding='utf-8') as f:
+        config = json.load(f)
+
+    # raise KeyError if 'api' doesn't exist in config file
+    if 'api' not in config:
+        raise KeyError(f"API section missing in {target_file}.")
+
+    # if present but not a dict, raise TypeError
+    if not isinstance(config['api'], dict):
+        raise TypeError(f"API section in {target_file} must be a dictionary, got {type(config['api']).__name__}.")
+    
+    # Updating the value of `['timeout']` in ram
+    config['api']['timeout'] = timeout
+
+    # Writing to file
+    with open(target_file, 'w', encoding='utf-8') as f:
+        json.dump(config, f, indent=4)
+        return(target_file)
