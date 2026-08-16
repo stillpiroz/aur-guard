@@ -2,6 +2,7 @@ import typer
 from pathlib import Path
 from dotenv import find_dotenv, set_key
 from scanner.scan import run_scan
+from config.manager import set_base_url
 
 # --- App Initialization ---
 
@@ -33,6 +34,19 @@ def set_api_key(key: str):
     set_key(str(env_path), "AUR_GUARD_API_KEY", key)
 
     typer.secho(f"✅ API key saved successfully to {env_path}", fg=typer.colors.GREEN)
+
+# @config url command
+@config.command(name="url")
+def url(url: str):
+    
+    """Update base_url in config file"""
+
+    try:
+        target_file = set_base_url(url)
+        typer.secho(f"✅ URL saved successfully to {target_file}", fg=typer.colors.GREEN)
+    
+    except (KeyError, TypeError) as e:
+        typer.secho(f"❌ Configuration Error: {e}", fg=typer.colors.RED, err=True)
 
 # --- @app Commands ---
 
