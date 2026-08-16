@@ -2,6 +2,7 @@ import os
 import json
 import requests
 from pathlib import Path
+from config.manager import load_config_file
 
 def run_ai(file_contents: str):
     # --- Load environment variables ---
@@ -13,15 +14,15 @@ def run_ai(file_contents: str):
         return None
 
     # --- Load configurations ---
-    config = load_json("config/config.json")
-    prompt_config = load_json("config/prompt.json")
+    config = load_config_file("config.json")
+    prompt_config = load_config_file("prompt.json")
 
     # --- Set up API details ---
     api_settings = config.get("api", {})
     base_url = api_settings.get("base_url", "https://api.openai.com/v1")
     model = api_settings.get("model", "gpt-4o-mini")
     timeout = api_settings.get("timeout", 15)
-
+    print(config, prompt_config, api_settings, base_url, model, timeout)
     # --- Build the prompt text ---
     sensitivity = config.get("default_sensitivity", "medium")
     
