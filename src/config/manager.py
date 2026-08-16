@@ -51,7 +51,7 @@ def setup_config_dir():
             shutil.copy(source_file, dest_file)
     return config_dir
 
-def load_config_files(file_name: str) -> dict:
+def load_config_file(file_name: str) -> dict:
 
     """
     Read config file or prompt from config dir.
