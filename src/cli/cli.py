@@ -2,7 +2,7 @@ import typer
 from pathlib import Path
 from dotenv import find_dotenv, set_key
 from scanner.scan import run_scan
-from config.manager import set_base_url, set_model
+from config.manager import set_base_url, set_model, set_default_sensitivity
 
 # --- App Initialization ---
 
@@ -60,6 +60,22 @@ def model(model: str):
     
     except (KeyError, TypeError) as e:
         typer.secho(f"❌ Configuration Error: {e}", fg=typer.colors.RED, err=True)
+
+# @config model command
+@config.command(name="default_sensitivity")
+def default_sensitivity(default_sensitivity: str):
+
+    """Update default_sensitivity in config file"""
+
+    try:
+        target_file = set_default_sensitivity(default_sensitivity)
+        typer.secho(f"✅ SENSITIVITY saved successfully to {target_file}", fg=typer.colors.GREEN)
+
+    except (KeyError, TypeError) as e:
+        typer.secho(f"❌ Configuration Error: {e}", fg=typer.colors.RED, err=True)
+    
+    except (ValueError) as e:
+        typer.secho(f"❌ Value Error: {e}", fg=typer.colors.RED, err=True)
 
 # --- @app Commands ---
 
