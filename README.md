@@ -27,7 +27,7 @@ This project is currently in its early development stage. The foundational struc
 
 - [ ] Improving default prompts to increase scanning accuracy
 
-- [ ] Moving the config directory: moving from src/config to the ~/.config/aur-guard directory (compliance with the 'XDG Base Directory Specification' standard)
+- [x] Moving the config directory: moving from src/config to the ~/.config/aur-guard directory (compliance with the 'XDG Base Directory Specification' standard)
 
 - [ ] Improving the CLI: especially subcommands related to config (such as setting the model and URL)
 
