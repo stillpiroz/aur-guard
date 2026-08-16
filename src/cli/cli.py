@@ -61,7 +61,7 @@ def model(model: str):
     except (KeyError, TypeError) as e:
         typer.secho(f"❌ Configuration Error: {e}", fg=typer.colors.RED, err=True)
 
-# @config model command
+# @config default_sensitivity command
 @config.command(name="default_sensitivity")
 def default_sensitivity(default_sensitivity: str):
 
