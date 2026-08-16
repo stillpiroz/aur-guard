@@ -2,7 +2,7 @@ import typer
 from pathlib import Path
 from dotenv import find_dotenv, set_key
 from scanner.scan import run_scan
-from config.manager import set_base_url, set_model, set_default_sensitivity
+from config.manager import set_base_url, set_model, set_default_sensitivity, set_timeout
 
 # --- App Initialization ---
 
@@ -76,6 +76,19 @@ def default_sensitivity(default_sensitivity: str):
     
     except (ValueError) as e:
         typer.secho(f"❌ Value Error: {e}", fg=typer.colors.RED, err=True)
+
+# @config timeout command
+@config.command(name="timeout")
+def timeout(timeout: int):
+
+    """Update timeout in config file"""
+
+    try:
+        target_file = set_timeout(timeout)
+        typer.secho(f"✅ TIMEOUT saved successfully to {target_file}", fg=typer.colors.GREEN)
+    
+    except (KeyError, TypeError) as e:
+        typer.secho(f"❌ Configuration Error: {e}", fg=typer.colors.RED, err=True)
 
 # --- @app Commands ---
 
