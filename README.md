@@ -1,6 +1,33 @@
 # aur-guard
 A lightweight, AI-powered CLI security auditor designed for Arch Linux users. It analyzes `PKGBUILD` files, `.install` scripts, and patches from the Arch User Repository (AUR) before execution to detect malicious code, supply-chain threats, and potential security risks.
 
+## 🚀 Usage
+
+First, clone the repository:
+
+```bash
+git clone [https://github.com/stillpiroz/aur-guard.git](https://github.com/stillpiroz/aur-guard.git)
+cd aur-guard
+```
+
+### Option 1: Using standard Python & pip
+
+Install dependencies and run the CLI:
+
+```bash
+pip install -r requirements.txt
+PYTHONPATH=./src python src/cli/cli.py
+```
+
+### Option 2: Using uv (Recommended)
+
+If you use uv, you can install dependencies and run the CLI directly:
+
+```bash
+uv pip install -r requirements.txt
+PYTHONPATH=./src uv run src/cli/cli.py
+```
+
 ## 📁 Project Structure
 
 ```text
