@@ -153,7 +153,7 @@ def set_default_sensitivity(default_sensitivity: str):
 
         check_api_section(config, target_file) 
 
-        # Updating the value of `['model']` in ram
+        # Updating the value of `['default_sensitivity']` in ram
         config['api']['default_sensitivity'] = default_sensitivity
 
         # Writing to file
