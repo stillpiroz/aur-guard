@@ -57,7 +57,7 @@ This project is currently in its early development stage. The foundational struc
 
 - [x] Moving the config directory: moving from src/config to the ~/.config/aur-guard directory (compliance with the 'XDG Base Directory Specification' standard)
 
-- [ ] Improving the CLI: especially subcommands related to config (such as setting the model and URL)
+- [x] Improving the CLI: especially subcommands related to config (such as setting the model and URL)
 
 - [ ] Integration with AUR helper: and the ability to install any package using aur-guard -S (it first scans, asks for your confirmation, and then installs with yay/paru)
 
