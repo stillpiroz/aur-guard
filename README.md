@@ -40,6 +40,7 @@ aur-guard/
 │       ├── config/         # Configuration & system prompts
 │       └── scanner/        # File parsing & security analysis
 ├── .gitignore
+├── requirements.txt
 ├── LICENSE
 └── README.md
 ```
