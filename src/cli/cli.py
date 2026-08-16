@@ -2,7 +2,7 @@ import typer
 from pathlib import Path
 from dotenv import find_dotenv, set_key
 from scanner.scan import run_scan
-from config.manager import set_base_url
+from config.manager import set_base_url, set_model
 
 # --- App Initialization ---
 
@@ -44,6 +44,19 @@ def url(url: str):
     try:
         target_file = set_base_url(url)
         typer.secho(f"✅ URL saved successfully to {target_file}", fg=typer.colors.GREEN)
+    
+    except (KeyError, TypeError) as e:
+        typer.secho(f"❌ Configuration Error: {e}", fg=typer.colors.RED, err=True)
+
+# @config model command
+@config.command(name="model")
+def model(model: str):
+        
+    """Update model in config file"""
+
+    try:
+        target_file = set_model(model)
+        typer.secho(f"✅ MODEL saved successfully to {target_file}", fg=typer.colors.GREEN)
     
     except (KeyError, TypeError) as e:
         typer.secho(f"❌ Configuration Error: {e}", fg=typer.colors.RED, err=True)
