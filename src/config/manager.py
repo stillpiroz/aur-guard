@@ -143,6 +143,11 @@ def set_model(model: str):
         return(target_file)
 
 def set_default_sensitivity(default_sensitivity: str):
+
+    """
+    Update `default_sensitivity` in `config.json`
+    """
+
     if default_sensitivity in ("low", "medium", "high"):
 
         target_file = get_config_json_path() # get config file path
