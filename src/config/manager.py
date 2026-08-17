@@ -95,6 +95,19 @@ def check_api_section(config, target_file):
     if not isinstance(config['api'], dict):
         raise TypeError(f"API section in {target_file} must be a dictionary, got {type(config['api']).__name__}.")
 
+def reset_config_json():
+
+    """
+    Reset config.json file to its default settings. 
+    """
+
+    source_config = Path('src/config/config.json')
+    target_file = get_config_json_path()
+
+    target_file.parent.mkdir(parents=True, exist_ok=True)
+
+    shutil.copyfile(source_config, target_file)
+    
 def set_base_url(base_url: str):
     
     """
