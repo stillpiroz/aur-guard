@@ -2,7 +2,7 @@ import typer
 from pathlib import Path
 from dotenv import find_dotenv, set_key
 from scanner.scan import run_scan
-from config.manager import set_base_url, set_model, set_default_sensitivity, set_timeout
+from config.manager import set_base_url, set_model, set_default_sensitivity, set_timeout, reset_config_json
 
 # --- App Initialization ---
 
@@ -90,6 +90,15 @@ def timeout(timeout: int):
     except (KeyError, TypeError) as e:
         typer.secho(f"❌ Configuration Error: {e}", fg=typer.colors.RED, err=True)
 
+# @config reset command
+@config.command(name="reset")
+def reset_config():
+
+    """Reset config.json to its default settings."""
+
+    reset_config_json()
+    typer.secho(f"✅ Config reset successfully.", fg=typer.colors.GREEN)
+    
 # --- @app Commands ---
 
 # @app scan command
