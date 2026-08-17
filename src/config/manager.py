@@ -106,14 +106,9 @@ def set_base_url(base_url: str):
     # Read file content
     with open(target_file, 'r', encoding='utf-8') as f:
         config = json.load(f)
-
-    # raise KeyError if 'api' doesn't exist in config file
-    if 'api' not in config:
-        raise KeyError(f"API section missing in {target_file}.")
-
-    # if present but not a dict, raise TypeError
-    if not isinstance(config['api'], dict):
-        raise TypeError(f"API section in {target_file} must be a dictionary, got {type(config['api']).__name__}.")
+    
+    # Check target_file config contains a dictionary-based 'api' section
+    check_api_section()
 
     # Updating the value of `['base_url']` in ram
     config['api']['base_url'] = base_url
@@ -135,13 +130,7 @@ def set_model(model: str):
     with open(target_file, 'r', encoding='utf-8') as f:
         config = json.load(f)
 
-    # raise KeyError if 'api' doesn't exist in config file
-    if 'api' not in config:
-        raise KeyError(f"API section missing in {target_file}.")
-
-    # if present but not a dict, raise TypeError
-    if not isinstance(config['api'], dict):
-        raise TypeError(f"API section in {target_file} must be a dictionary, got {type(config['api']).__name__}.")
+    check_api_section()
     
     # Updating the value of `['model']` in ram
     config['api']['model'] = model
@@ -165,6 +154,7 @@ def set_default_sensitivity(default_sensitivity: str):
         with open(target_file, 'r', encoding='utf-8') as f:
             config = json.load(f)
 
+        # Check target_file config contains a dictionary-based 'api' section
         check_api_section(config, target_file) 
 
         # Updating the value of `['default_sensitivity']` in ram
@@ -189,13 +179,8 @@ def set_timeout(timeout):
     with open(target_file, 'r', encoding='utf-8') as f:
         config = json.load(f)
 
-    # raise KeyError if 'api' doesn't exist in config file
-    if 'api' not in config:
-        raise KeyError(f"API section missing in {target_file}.")
-
-    # if present but not a dict, raise TypeError
-    if not isinstance(config['api'], dict):
-        raise TypeError(f"API section in {target_file} must be a dictionary, got {type(config['api']).__name__}.")
+    # Check target_file config contains a dictionary-based 'api' section
+    check_api_section()
     
     # Updating the value of `['timeout']` in ram
     config['api']['timeout'] = timeout
