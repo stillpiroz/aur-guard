@@ -70,6 +70,11 @@ def load_config_file(file_name: str) -> dict:
         return json.load(f)
 
 def get_config_json_path():
+
+    """
+    Return config.json Path.
+    """
+    
     # Find config dir path and then specified file path
     config_dir = setup_config_dir() # get config dir path from setup_config_dir()
     target_file = config_dir / "config.json" # get file path 
@@ -145,7 +150,7 @@ def set_model(model: str):
 def set_default_sensitivity(default_sensitivity: str):
 
     """
-    Update `default_sensitivity` in `config.json`
+    Update `set_default_sensitivity` in `config.json`
     """
 
     if default_sensitivity in ("low", "medium", "high"):
