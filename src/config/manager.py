@@ -83,6 +83,10 @@ def get_config_json_path():
 
 def check_api_section(config, target_file):
 
+    """
+    Validates that the target_file config contains a dictionary-based 'api' section.
+    """
+
     # raise KeyError if 'api' doesn't exist in config file
     if 'api' not in config:
         raise KeyError(f"API section missing in {target_file}.")
