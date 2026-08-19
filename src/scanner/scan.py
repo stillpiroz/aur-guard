@@ -3,6 +3,7 @@ from pathlib import Path
 import shutil
 import subprocess
 from api.client import run_ai
+from scanner.exceptions import DependencyError
 
 def run_scan(target: str):
     target_path = Path(target)  # Convert string to Path object
@@ -27,7 +28,7 @@ def found_url(target):
 def clone(git_url):
     # --- Check if git is installed ---
     if not shutil.which("git"):
-        return "error: git is not installed."
+        raise DependencyError("git is not installed.")
 
     # --- Set up target directory ---
     target_name = Path(git_url).stem  # Extract repository name
