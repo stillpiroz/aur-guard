@@ -143,7 +143,7 @@ def set_model(model: str):
     with open(target_file, 'r', encoding='utf-8') as f:
         config = json.load(f)
 
-    check_api_section()
+    check_api_section(config, target_file)
     
     # Updating the value of `['model']` in ram
     config['api']['model'] = model
