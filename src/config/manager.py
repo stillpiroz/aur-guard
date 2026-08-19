@@ -121,7 +121,7 @@ def set_base_url(base_url: str):
         config = json.load(f)
     
     # Check target_file config contains a dictionary-based 'api' section
-    check_api_section()
+    check_api_section(config, target_file)
 
     # Updating the value of `['base_url']` in ram
     config['api']['base_url'] = base_url
